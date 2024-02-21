@@ -1,0 +1,22 @@
+<div class="warning-container">
+    <style>.warning-container{display: none;}</style>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <style>.warning-container{display: flex;}</style>
+
+        {% for category, message in messages %}
+            <div class="warning {% if category == 'error' %}error{% else %}success{% endif %}">
+                {% if category == "error" %}
+                    <img src="{{url_for('static', filename='assents/icons/warning/warning_icon.svg')}}">
+                    <span>Error: </span>
+                {% else %}
+                    <img src="{{url_for('static', filename='assents/icons/warning/thumb_up.svg')}}">
+                    <span>Success: </span>
+                {% endif %}
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>

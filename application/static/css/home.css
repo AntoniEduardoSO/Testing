@@ -1,0 +1,361 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #e6eaf0;
+}
+
+.wrapper {
+  flex: 1;
+  font-family: "Inter", "sans-serif";
+}
+
+.nav input {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.nav input:hover {
+  text-decoration: none; 
+}
+
+.header {
+  width: 1190px;
+  height: 40px;
+  margin: 20px auto;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  display: flex;
+}
+
+.nav ul {
+  display: flex;
+}
+
+.nav ul li {
+  margin-left: 40px;
+  position: relative;
+}
+
+.nav ul li a {
+  color: #1377b2;
+}
+
+.nav-js ul li a.active::after {
+  content: "";
+}
+
+.auth-container {
+  margin-top: 3.75rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.auth {
+  width: 300px;
+  height: 400px;
+  flex-direction: column;
+  padding: 20px;
+  display: flex;
+  text-align: center;
+}
+
+.logo-eduvis {
+  display: flex;
+  gap: 8px;
+  margin: 0 auto;
+  margin-bottom: 34px;
+}
+
+.logo-eduvis p {
+  font-size: 18px;
+  font-weight: 200;
+  color: #1377b2;
+  top: 2px;
+  position: relative;
+}
+
+.header-form h1 {
+  font-size: 24px;
+  font-weight: 300;
+  color: #474d59;
+  margin-bottom: 8px;
+}
+
+.header-form p {
+  font-size: 14px;
+  font-weight: 200;
+  color: #636973;
+  margin-bottom: 32px;
+}
+
+.auth .credential {
+  width: 260px;
+  height: 40px;
+  padding: 8px;
+  border: 2px solid #d1d9e5;
+  border-radius: 4px;
+  background-color: #f5f7fa;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.auth-options a {
+  color: #008ce1;
+}
+.remeber-me {
+  display: flex;
+}
+
+.remeber-me p {
+  color: #636973;
+}
+
+#remember-me {
+  display: block;
+  position: relative;
+  top: -3px;
+}
+
+.auth .credential::placeholder {
+  font-weight: 300;
+  color: #7e838c;
+}
+
+.submit-auth {
+  display: block;
+  padding: 8px 32px;
+  color: #c2e5fa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 2px solid #008ce1;
+  border-radius: 4px;
+  background-color: #0b69a3;
+  margin: 0 auto 32px auto;
+  cursor: pointer;
+}
+
+.submit-auth:hover {
+  background-color: #074369;
+  border: 2px solid #0079c4;
+}
+
+.register {
+  font-weight: 300;
+  color: #474d59;
+}
+
+.register a {
+  color: #047bc1;
+}
+
+.footer {
+  max-height: 220px;
+  min-width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.footer img {
+  min-width: 100%;
+  display: block;
+}
+
+
+
+.warning-container {
+  top: 25px;
+  width: 50%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: absolute;
+  z-index: 1000;
+  border-radius: 10px;
+  color: black;
+}
+
+.warning-container span{
+  font-weight: bold;
+}
+
+.warning{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning.error {
+  background-color: #ff6961; /* Vermelho para erros */
+  border-color: red; /* Cor da borda para erros */
+}
+
+.warning.success {
+  background-color: green; /* Verde para sucesso */
+  border-color: green; /* Cor da borda para sucesso */
+}
+
+.warning span{
+  padding: 10px;
+}
+
+.warning img{
+  height: 30px;
+  bottom: 10px;
+}
