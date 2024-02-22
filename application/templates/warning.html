@@ -1,23 +1,44 @@
-<div class="warning-container">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/warning.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="warning-container message-box-info" id="warning_container">
     <style>.warning-container{display: none;}</style>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     <style>.warning-container{display: flex;}</style>
 
-        {% for category, message in messages %}
-            <div class="warning {% if category == 'error' %}error{% else %}success{% endif %}">
-                <div class="warning-icon {% if category == 'error' %}error{% else %}success{% endif %}">
-                    {% if category == "error" %}
-                        <img src="{{url_for('static', filename='assents/icons/warning/warning_icon.svg')}}">
-                    {% else %}
-                        <img src="{{url_for('static', filename='assents/icons/warning/thumb_up.svg')}}">
-                    {% endif %}
-                </div>
-                {{ message }}
-                <span>X</span>
-            </div>
-        {% endfor %}
+    {% for category, message in messages %}
+    <div class="warning {% if category == 'error' %}error{% elif category == 'message' %}success {% elif category == 'warning' %}warning {% elif category == 'info' %}info {% endif %} " id="warning">
+        <div class="warning-icon {% if category == 'error' %}error{% elif category == 'message' %}success {% elif category == 'warning' %}warning {% elif category == 'info' %}info{% endif %}" id="warning_icon">
+            {% if category == "error" %}
+                <i class="fa fa-ban fa-2x"></i>
+                <span><strong>Error:</strong></span>
+
+            {% elif category == "message" %}
+                <i class="fa fa-check fa-2x"></i>
+                <span><strong>Success:</strong></span>
+
+            {%elif category == "warning"%}
+                <i class="fa fa-warning fa-2x"></i>
+                <span><strong>Warning:</strong></span>
+
+            {%elif category == "info"%}
+                <i class="fa fa-info-circle fa-2x"></i>
+                <span><strong>Info:</strong></span>
+
+            {% endif %}
+
+            {{ message }}
+            
+            <i class="fa fa-times fa-2x exit-button " id="close"></i>
+
+        </div>
+        
+    </div>
+    {% endfor %}
     {% endif %}
     {% endwith %}
-</div>
+</div>  
+
+<script src="https://kit.fontawesome.com/7e6310f51e.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/warning.js') }}"></script>

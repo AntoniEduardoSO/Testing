@@ -57,10 +57,10 @@
   <footer class="footer">
     <img src="{{ url_for('static', filename='assents/imgs/home/footer.svg') }}" alt="">
   </footer>
-
-
-  {% extends "warning.html" %}
+  <div class="alert">
+    {% extends "warning.html" %}
     {% block content %}
     {% endblock %}
+  </div>
 </body>
 </html>

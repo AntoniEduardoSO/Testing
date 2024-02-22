@@ -22,54 +22,6 @@ body {
     overflow: hidden;
     perspective: 1000px;
 
-    background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, black 0px, black 19px, transparent 19px, transparent 22px), linear-gradient(90deg, #00fffa, #f0f0f0);
-}
-
-.warning-container {
-    top: 25px;
-    width: 50%;
-    height: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    position: absolute;
-    z-index: 1000;
-}
-
-.warning{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.warning-icon{
-    padding-right: 20px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.warning-icon.error{
-    height: 100%;
-    background-color: #ff8383;
-}
-
-
-.warning.error {
-    background-color: #ff0f0f;
-}
-
-.warning.success {
-    background-color: green;
-    border-color: green;
-}
-
-.warning span{
-    padding: 10px;
-    color: white;
 }
 
 
