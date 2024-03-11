@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm" method="POST">
+        <input type="text" id="myInput">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            // Prevenir o comportamento padrão do formulário (recarregar a página)
+            event.preventDefault();
+
+            // Pegar o valor do campo de entrada
+            const inputValue = document.getElementById("myInput").value;
+
+            // Construir a URL com base no valor do campo de entrada
+            const url = `http://192.168.48.21:8000/api/agenda/${inputValue}`;
+
+            // Fazer a requisição fetch
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao obter os eventos da agenda');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Dados recebidos:", data);
+                    // Faça o que for necessário com os dados recebidos
+                })
+                .catch(error => {
+                    console.error('Erro ao obter os eventos:', error);
+                });
+        });
+    </script>
+</body>
+</html>

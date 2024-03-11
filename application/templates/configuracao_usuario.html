@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ola {{main_usuario.nome}}</h1>
+    <form method = "POST" enctype="multipart/form-data" action="{{url_for('configuracao_usuario')}}" >
+
+        <input type="file" name="file">
+
+        <input type="submit">
+    </form>
+
+    <div class="alert">
+        {% extends "warning.html" %}
+        {% block content %}
+        {% endblock %}
+      </div>
+</body>
+</html>

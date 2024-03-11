@@ -31,7 +31,7 @@ def verificar_cadastro(form):
             cargo = request.form.get('credencial-cargo')
             telefone = request.form.get('credencial-telefone')
             supervisor = request.form.get('credencial-supervisor')
-            status = "desativado"
+            status = "Plebe"
             dt_criacao = datetime.datetime.now()
 
             # print('nome: ' + nome) 

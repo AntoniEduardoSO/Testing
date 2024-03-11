@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AcademiaScope - Usuários</title>
+    <link href="{{url_for('static', filename='css/usuarios.css')}}" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+        <a href="{{url_for('dashboard')}}"><img src="{{ url_for('static', filename='assents/imgs/home/header-logo.svg') }}" alt="logo da prefeitura de maceio"></a>
+    </div>
+
+
+    <div class="container">
+      <div class="header">header
+
+      </div>
+
+      <div class="left"> leaft
+
+      </div>
+
+
+      <div class="center"> Center
+
+      </div>
+
+
+      <div class = right> right
+
+      </div>
+      
+    </div>
+
+
+    <!-- <table>
+      <thead>
+          <tr>
+              <th scope="col">Foto</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Setor</th>
+              <th scope="col">Cargo</th>
+              <th scope="col">Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for usuario in usuarios %}
+          {% if usuario.id_usuario != main_usuario.id_usuario %}
+          <tr id="user" class="user">
+              <td><img alt="" src="{{ url_for('static', filename='uploads/' + usuario.foto) }}"></td>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.setor_escola }}</td>
+              <td>{{ usuario.cargo }}</td>
+              <td>{{ usuario.status }}</td>
+              <a href="{{url_for('usuario', id_usuario=usuario.id_usuario)}}"><td>Detalhes</td></a>
+          </tr>
+          {% endif %}
+          {% endfor %}
+      </tbody>
+  </table> -->
+  
+  </body>
+</html>

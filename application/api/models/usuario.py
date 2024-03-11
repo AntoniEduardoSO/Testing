@@ -1,10 +1,11 @@
-from application import db
+from application import db, app
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from passlib.hash import pbkdf2_sha256
 from wtforms import StringField, PasswordField, SubmitField, EmailField
 from wtforms.validators import InputRequired, Length, Email,  ValidationError, EqualTo, Regexp
-import re
+import os
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'usuarios'
@@ -19,6 +20,7 @@ class User(db.Model, UserMixin):
     supervisor = db.Column(db.String)
     status = db.Column(db.String)
     dt_criacao = db.Column(db.Date)
+    foto = db.Column(db.String)
 
     def __init__(self, id_usuario, nome, senha, email, cpf, setor_escola, cargo, numero_telefone, supervisor, status, dt_criacao):
         self.id_usuario = id_usuario
@@ -32,8 +34,13 @@ class User(db.Model, UserMixin):
         self.supervisor = supervisor
         self.status = status
         self.dt_criacao = dt_criacao
+        self.foto = "usuario_vazio.svg"
 
     
+    def foto_path(self):
+        return os.path.join(app.config['UPLOAD_FOLDER'], f"{self.id_usuario}_foto.png")
+
+
     def ver_senha(self, senha):
         return pbkdf2_sha256.verify(senha, self.senha)
     
@@ -79,3 +86,5 @@ class LoginForm(FlaskForm):
                                   render_kw= {"placeholder": "Senha", "class": "credential"})
     
     submit = SubmitField("Entrar")
+
+

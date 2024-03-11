@@ -1,0 +1,35 @@
+
+.container{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  text-align: center;
+  display: grid;
+}
+
+.body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.user img {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border-radius: 40px;
+    border: 2px solid #484e5c;
+    background-color: #414855;
+    margin-right: 16px;
+    background-size: 110%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("/assents/imgs/download_400x400.jpg");
+  }
+
+
+.container:hover {
+  background-color: black;
+}
