@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!--Typography-->
+  <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assents/favicon/semap/favicon.ico')}}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <!--Favicon-->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/semap/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/semap/sectors.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/semap/modal-sector.css')}}">
+  <!--CSS-->
+  <title>Semap - Setores</title>
+</head>
+
+<body>
+  <div class=" wrapper">
+    <div class="header-container">
+      <header class="header">
+        <div class="logo">
+          <a href="{{url_for('semap')}}"><img src="{{url_for('static', filename='assents/imgs/semap/logo-semed.svg')}}" alt="logo da prefeitura de Maceió"></a>
+        </div>
+        <button class="menu-mobile" data-menu>Menu</button>
+        <nav class="nav-bar">
+          <ul class="nav-list">
+            <li data-dropdown>
+              <a href="#">Setores <img src="{{url_for('static', filename='assents/icons/semap/dropdown.svg')}}" alt="seta"></a>
+              <ul class="nav-dropdown">
+                <li><a href="">Lista de Setores</a></li>
+                <li><a href="">Hierarquia de Setores</a></li>
+                <li><a href="">Ajustar Setor</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Mapa</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li> {{main_usuario.nome}} </li>
+            {% if main_usuario != null %}
+              {% if main_usuario.status == "Administrador" %}
+                <li>ADICIONAR</li>
+              {% endif %}
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div class="grid-container">
+      <main>
+        <div class="sector-header">
+          <div class="title">
+            <h1 class="t2">Setores</h1>
+            <span data-sector="number"></span>
+          </div>
+          <form action="get" id="sectors">
+            <div class="search">
+              <img src="{{ url_for('static', filename='assents/icons/semap/search.svg') }}" alt="lupa">
+              <input type="text" name="search" id="search" placeholder="Pesquisar">
+            </div>
+            <div class="select">
+              <select name="biuld" id="biuld">
+                <option value="all">Todos</option>
+                <option value="dge">DGE</option>
+                <option value="dga">DGA</option>
+                <option value="rh">RH e Anexos</option>
+                <option value="others">Outros</option>
+              </select>
+              <img src="{{url_for('static', filename='assents/icons/semap/orange-dropdown.svg')}}" alt="seta laranja">
+            </div>
+            <button type="submit">Buscar</button>
+          </form>
+        </div>
+        <div class="sectors-list-container">
+          <ul class="sectors-list-header">
+            <li>Nome</li>
+            <li>Sigla</li>
+            <li>Localização</li>
+            <li>Detalhes</li>
+          </ul>
+          <ul class="sector-list" data-list id="sector-list">
+          </ul>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="container-modal" data-modal="container">
+    <div class="modal" data-modal="modal">
+      <div class="modal-header">
+        <h2 data-modal="name">Secretaria Adjunta de Gestão de Educação</h2>
+        <span data-modal="close">x</span>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li class="modal-tag">
+            <div class="modal-label">
+              <img src="{{ url_for('static', filename='assents/icons/semap/tag-icon.svg') }}" alt="tag">
+              <h3>Sigla</h3>
+            </div>
+            <p data-modal="tagname">SAGE</p>
+          </li>
+          <li>
+            <div class="modal-label">
+              <img src="{{url_for('static', filename='assents/icons/semap/biuld-icon.svg') }}" alt="tag">
+              <h3 data-modal="biuld">Prédio</h3>
+            </div>
+            <p>DGE</p>
+          </li>
+          <li>
+            <div class="modal-label">
+              <img src="{{url_for('static', filename='assents/icons/semap/phone-icon.svg')}}" alt="">
+              <h3>Contato</h3>
+            </div>
+            <p data-modal="contact">3312-1256</p>
+          </li>
+          <li>
+            <div class="modal-label">
+              <img src="{{url_for('static', filename='assents/icons/semap/user-icon.svg')}}" alt="">
+              <h3>Gestor</h3>
+            </div>
+            <p data-modal="supervisor">Josirlene Soares Pereira De Mello Feitosa</p>
+          </li>
+        </ul>
+        <div class="modal-tag location-container">
+          <div class="modal-label location">
+            <img src="{{url_for('static', filename='assents/icons/semap/location-icon.svg')}}" alt="tag">
+            <h3>Localização</h3>
+          </div>
+          <p data-modal="location">Ao entrar no DGA, siga pela porta espelhada a direita, entre na quarta porta a direita.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="close-modal" data-modal="close">Ok</button>
+          <a  class="change-sector" data-modal="change"> Alterar</a>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- <div class="container-modal" data-modal="container">
+    <div class="modal" data-modal="modal">
+      <div class="modal-header">
+        <h2>Secretaria Adjunta de Gestão de Educação</h2>
+        <span data-modal="close">x</span>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li class="modal-tag">
+            <div class="modal-label">
+              <img src="{{ url_for('static', filename='assents/icons/semap/tag-icon.svg') }}" alt="tag">
+              <h3>Sigla</h3>
+            </div>
+            <p>SAGE</p>
+          </li>
+          <li>
+            <div class="modal-label">
+              <img src="{{url_for('static', filename='assents/icons/semap/biuld-icon.svg') }}" alt="tag">
+              <h3>Prédio</h3>
+            </div>
+            <p>DGE</p>
+          </li>
+          <li>
+            <div class="modal-label">
+              <img src="{{url_for('static', filename='assents/icons/semap/phone-icon.svg')}}" alt="">
+              <h3>Contato</h3>
+            </div>
+            <p>3312-1256</p>
+          </li>
+          <li>
+            <div class="modal-label">
+              <img src="{{url_for('static', filename='assents/icons/semap/user-icon.svg')}}" alt="">
+              <h3>Gestor</h3>
+            </div>
+            <p>Josirlene Soares Pereira De Mello Feitosa</p>
+          </li>
+        </ul>
+        <div class="modal-tag location-container">
+          <div class="modal-label location">
+            <img src="{{url_for('static', filename='assents/icons/semap/location-icon.svg')}}" alt="tag">
+            <h3>Localização</h3>
+          </div>
+          <p>Ao entrar no DGA, siga pela porta espelhada a direita, entre na quarta porta a direita.</p>
+        </div>
+        <button class="close-modal" data-modal="close">Ok</button>
+      </div> -->
+    </div>
+  </div>
+  </div>
+  <script type="module" src="{{url_for('static', filename='js/semap/script.js')}}"></script>
+</body>
+</html>

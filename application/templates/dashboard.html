@@ -46,11 +46,8 @@
         <div class="content">
           <div class="header">
             <form action="{{url_for('dashboard')}}"class="search" method="POST">
-              <img src="{{ url_for('static', filename='assents/icons/dashboard/busca.svg') }}" alt="lupa">
+              <button type = "submit" class="custom-button"></button>
               <input type="text" placeholder="Pesquise aqui...", id="escolas-input">
-              <div class="autocomplete-result">
-                  <ul class = "autocomplete-list" id="escolas-lista"></ul>
-              </div>
             </form>
             <div class="warnings"><img src="{{ url_for('static', filename='assets/icons/dashboard/warning.svg') }}" alt="avisos"></div>
             <div class="user">

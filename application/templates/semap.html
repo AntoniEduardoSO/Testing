@@ -1,168 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Mono:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!--Typography-->
+  <link rel="icon" type="image/png" sizes="16x16" href= "{{ url_for('static', filename='assents/favicon/semap/favicon.ico') }}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
   <!--Favicon-->
-  <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='assents/favicon/semap/apple-touch-icon.png')}}">
-  <link rel=" icon" type="image/png" sizes="32x32" href=" {{url_for('static', filename='assents/favicon/semap/favicon-32x32.png')}}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assents/favicon/semap/favicon-16x16.png')}}">
-  <title>Semap</title>
-  <link rel="stylesheet" href="{{url_for('static', filename='css/semap/reset.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/semap/settings.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/semap/style.css')}}">
+  <link rel="stylesheet" href= "{{ url_for('static', filename='css/semap/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/semap/main.css') }}">
+  <!--CSS-->
+  <title>Semap - Setores</title>
 </head>
 
 <body>
-  <div class="wrapper">
-    <header class="header-container">
-      <div class="header">
-        <nav class="menu">
-          <div class="logo">
-            <p class="logo-title"><a href="{{url_for('dashboard')}}">Semap</a></p>
-            <p>Mapa interativo</p>
-          </div>
-          <ul>
-            <li><a href="#" class="ativo">Mapa</a></li>
-            <li><a href="#">Setores</a></li>
-            <li><a href="#">Projeto</a></li>
-            <li><a href="#">Ajuda</a></li>
+  <div class=" wrapper">
+    <div class="header-container">
+      <header class="header">
+        <div class="logo">
+          <a href="{{ url_for('dashboard') }}"><img src="{{ url_for('static', filename='assents/imgs/semap/logo-semed.svg') }}" alt="logo da prefeitura de Maceió"></a>
+        </div>
+        <button class="menu-mobile" data-menu>Menu</button>
+        <nav class="nav-bar">
+          <ul class="nav-list">
+            <li data-dropdown>
+              <a href="#">Setores <img src="{{url_for('static', filename = 'assents/icons/semap/dropdown.svg')}}" alt="seta"></a>
+              <ul class="nav-dropdown">
+                <li><a href="{{url_for('listasetores')}}">Lista de Setores</a></li>
+                <li><a href="#">Hierarquia de Setores</a></li>
+                <li><a href="#">Ajustar Setor</a></li>
+              
+              </ul>
+            </li>
+            <li><a href="#">Mapa</a></li>
+            <li><a href="{{url_for('listasetores')}}">Lista de Setores</a></li>
             <li><a href="{{url_for('agenda')}}">Agenda</a></li>
             <li><a href = "{{url_for('teste')}}">Testes</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Ajuda</a></li>
           </ul>
-          <div class="contact">
-            <a href="#" class="teste">Contato</a>
-          </div>
         </nav>
-      </div>
-    </header>
-    <main class="main">
-      <div class="copy">
-        <p> Todos os direitos reservados a Approch The Ocean LTDA <br>e a Secretaria Municipal de Educação de Maceió.&copy;</p>
-      </div>
-      <div class="map" data-type="map-container" data-status="extended">
-        <div class="inner-map" data-type="map">
-          <div class="form-container">
-            <div action="" method="get" class="form" id="form">
-              <input type="text" name="sector" placeholder="Insira o setor" data-input>
-            </div>
-            <ul class="sector-buttons">
-              <li><button>DGA</button></li>
-              <li><button>DGE</button></li>
-              <li><button>Extensão DGE</button></li>
-              <li><button>RH</button></li>
-              <li><button>Complexo Anexo</button></li>
-            </ul>
-          </div>
-          <div class="bottom">
-            <div class="column-1">
-              <div data-sector="dge0" class="dic" aria-label="Diretoria de Informação Continuado"></div>
-            </div>
-            <div class="column-2">
-              <div data-sector="dge1" class="cc" aria-label="Central de Cópias"></div>
-              <div data-sector="dge2" class="ased" aria-label="Apoio Subsecretaria e Direção"></div>
-              <div data-sector="dge3" class="sgp" aria-label="Subsecretaria de Gestão Pedagogica"></div>
-            </div>
-            <div class="column-3">
-              <div data-sector="dge4" class="dep" aria-label="Diretoria Especializada Pedagogica"></div>
-              <div>
-                <div data-sector="dge5" class="ctef-1" aria-label="Coordenadoria Técnica de Ensino Fundamental">
-                  <div></div>
-                </div>
-                <div data-sector="dge5" class="ctef-2" aria-label="Coordenadoria Técnica de Ensino Fundamental">
-                </div>
-                <div data-sector="dge5" class="ctef-3" aria-label="Coordenadoria Técnica de Ensino Fundamental">
-                </div>
-
-              </div>
-              <div data-sector="dge5" class="ctef-4" aria-label="Coordenadoria Técnica de Ensino Fundamental">
-              </div>
-            </div>
-            <div class="column-4">
-              <div data-sector="dge6" class="ctei" aria-label="Coordenadoria Técnica de Ensino Infantil">
-              </div>
-              <div data-sector="dge7" class="ctejai" aria-label="Coordenadoria Técnica de Ensino ao Joven, Adulto e Idoso.">
-              </div>
-              <div data-sector="dge8" class="ctee" aria-label="Coordenadoria Técnica de Ensino Especial.">
-              </div>
-              <div data-sector="dge9" class="ctgaedhc" aria-label="Coordenadoria Tecnica Geral de Ações Educacionais Diretios Humanos e Cidadania">
-              </div>
-            </div>
-            <div class="column-5">
-              <div class="column-5-main">
-                <div class="top-column-5">
-                  <div data-sector="dge10" class="dgerecp" aria-label="Recepção DGE">
-                  </div>
-                  <div data-sector="dead" class="dead" aria-label="Desconhecido">
-                  </div>
-                  <div data-sector="dge11" class="ctac" aria-label="Coordenadoria Ténica de Arte e Cultura.">
-                  </div>
-                </div>
-                <div class="bottom-column-5">
-                  <div data-sector="dead" class="dead" aria-label="Desconhecido">
-                  </div>
-                  <div data-sector="dead" class="dead" aria-label="Desconhecido">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="column-6">
-              <div data-sector="dge12" class="cgiae" aria-label="Coordenadoria Geral de Informação Avaliação Escolar.">
-              </div>
-              <div data-sector="dge13" class="ctgppe" aria-label="Coordenadoria Técnica Geral de Programas e Projetos Escolares.">
-              </div>
-              <div data-sector="dge14" class="ctgge" aria-label="Coordenadoria Técnica Geral Gestão Escolar.">
-              </div>
-              <div data-sector="dge15" class="ctgle" aria-label="Coordenadoria Técnica Geral Legislação Educacional.">
-              </div>
-              <div data-sector="dge16" class="dege" aria-label="Diretoria Especializada de Gestão Educacional.">
-              </div>
-            </div>
-            <div class="column-7">
-              <div data-sector="dead" class="dead" aria-label="Desconhecido">
-              </div>
-              <div data-sector="dead" class="dead" aria-label="Desconhecido">
-              </div>
-              <div data-sector="dead" class="dead" aria-label="Desconhecido">
-              </div>
-              <div data-sector="dge17" class="auditorio" aria-label="Auditorio.">
-              </div>
-            </div>
-          </div>
-          <div class="right"></div>
-          <div class="left"></div>
-          <div class="top"></div>
-        </div>
-      </div>
-      <div class="sidebar-container" data-type="sidebar-container">
-        <div class="sidebar" data-type="sidebar">
-          <div class="close" data-sidebar="close-sidebar">
-            <p>></p>
-          </div>
-          <h2 class="sidebar-single" data-sidebar="single">DEGE</h2>
-          <h1 class="sidebar-title" data-sidebar="title">Diretoria Especial de Gestão Escolar</h1>
-          <h2 class="sidebar-biuld" data-sidebar="biuld">DGE</h2>
-          <p class="sidebar-location" data-sidebar="location">Ultima porta do Bloco B do DGE ao entrar pela entrada principal.</p>
-        </div>
-      </div>
-    </main>
-    <div class="warning-container" data-type="warning">
-      <div class="warning">
-        <button class="close-warning" data-warning="close">X</button>
-        <div class="warning-header">
-          <h1>Atenção<span>!</span></h1>
-        </div>
-        <div class="warning-body">
-          <p>Esta aplicação se encontra em seu <span>beta</span>.</p>
-          <p>Comunique quaisquer bugs, erros de digitação, informações erroneas ao seu desenvolvedor para futuros patchs de correção. Sua colaboração é importante.</p>
-        </div>
-      </div>
+      </header>
     </div>
-    <script type="module" src="{{url_for('static', filename='js/semap/semap.js')}}"></script>
+    <div class="grid-container">
+      <main class="main-hero">
+        <div class="main-content">
+          <h2 class="upper-title">ambiente de testes</h2>
+          <h1>Bem-vindo ao <span>Help Center</span>
+          </h1>
+          <form action="get" name="search" class="main-search">
+            <div class="search-container">
+              <img src="{{ url_for('static', filename='assents/icons/semap/search.svg')}}" alt="lupa">
+              <input type="text" name="search" placeholder="Pesquise aqui">
+            </div>
+          </form>
+          <div class="main-cards">
+            <a class="card" href="#">
+              <div class="card-header">
+                <img src=" {{ url_for('static', filename='assents/icons/semap/rocket-icon.svg')}}" alt="foguete">
+                <h3>Projeto</h3>
+              </div>
+              <div class="card-body">
+                <p>Um guia rápido e eficaz para superar desafios iniciais e acelerar sua evolução no setor. Simplifique sua jornada de aprendizado hoje!</p>
+              </div>
+              <div class="card-bottom"> <img src="{{ url_for('static', filename='assents/icons/semap/arrow-button.svg')}}" alt=""></div>
+            </a>
+            <a class="card" href="#">
+              <div class="card-header">
+                <img src="{{ url_for('static', filename='assents/icons/semap/bug-icon.svg') }}" alt="inseto">
+                <h3>Relatar Bug</h3>
+              </div>
+              <div class="card-body">
+                <p>Reporte bugs e contribua para a melhoria contínua do nosso sistema. Acesse agora o nosso portal e ajude-nos a aprimorar sua experiência!</p>
+              </div>
+              <div class="card-bottom"> <img src=" {{ url_for('static', filename='assents/icons/semap/arrow-button.svg')}}" alt=""></div>
+            </a>
+          </div>
+        </div>
+        <div class="main-img"></div>
+      </main>
+      <div class="services-container">
+        <div class="services-header">
+          <h1>Como nós podemos te <span>ajudar ?</span></h1>
+          <h2>Caso não encontre o que deseja aqui, vá ao seu superior.</h2>
+        </div>
+        <ul class="services-body">
+          <li class="card">
+            <a href="">
+              <div class="card-header">
+                <h3>Começando no setor & conceitos básicos.</h3>
+                <img src=" {{ url_for('static', filename='assents/icons/semap/school-green-icon.svg')}}" alt="">
+              </div>
+              <div class="card-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta repellat eaque doloremque architecto ab iure consequuntur optio, eius aut ipsa, magnam quas earum doloribus perspiciatis veritatis at temporibus vel ullam?</p>
+              </div>
+              <div class="card-bottom">
+                <p>veja mais</p>
+                <img src="{{ url_for('static', filename='assents/icons/semap/card-arrow.svg')}}" alt="">
+              </div>
+            </a>
+          </li>
+
+          <li class="card">
+            <a href="">
+              <div class="card-header">
+                <h3>Mapa Interativo da Secretaria.</h3>
+                <img src=" {{ url_for('static', filename='assents/icons/semap/map-icon.svg')}}" alt="">
+              </div>
+              <div class="card-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta repellat eaque doloremque architecto ab iure consequuntur optio, eius aut ipsa, magnam quas earum doloribus perspiciatis veritatis at temporibus vel ullam?</p>
+              </div>
+              <div class="card-bottom">
+                <p>veja mais</p>
+                <img src="{{ url_for('static', filename='assents/icons/semap/card-arrow.svg')}}" alt="">
+              </div>
+            </a>
+          </li>
+          <li class="card">
+            <a href="">
+              <div class="card-header">
+                <h3>Lista de Setores e seus detalhes</h3>
+                <img src="{{ url_for('static', filename='assents/icons/semap/sectors-icon.svg')}} " alt="">
+              </div>
+              <div class="card-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta repellat eaque doloremque architecto ab iure consequuntur optio, eius aut ipsa, magnam quas earum doloribus perspiciatis veritatis at temporibus vel ullam?</p>
+              </div>
+              <div class="card-bottom">
+                <p>veja mais</p>
+                <img src="{{ url_for('static', filename='assents/icons/semap/card-arrow.svg')}}" alt="">
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <footer>
+        <p>Todos os direitos reservados.</p>
+
+      </footer>
+    </div>
+  </div>
+
+  <script type="module" src="{{ url_for('static', filename='js/semap/script.js')}}"></script>
 </body>
 
 </html>

@@ -295,6 +295,20 @@ body {
   border: 1px solid #c0c5cc;
 }
 
+
+.search {
+
+}
+
+.custom-button {
+  border: none;
+  background: url(" {{ url_for('static', filename='assents/icons/dashboard/busca.svg') }}") no-repeat center center;
+  width: 21px;
+  height: 20px;
+  padding: 0; /* Remova o preenchimento */
+  cursor: pointer; /* Adicione um cursor indicando que é clicável */
+} 
+
 .search img {
   position: absolute;
   top: 8px;

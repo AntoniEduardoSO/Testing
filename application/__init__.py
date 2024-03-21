@@ -11,7 +11,7 @@ print(f"Conectando ao banco de dados: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "KATOCHI"
-app.config['PERMANENT_SESSION_LIFETIME'] = 20000000
+app.config['PERMANENT_SESSION_LIFETIME'] = 10000
 app.config['STATIC_FOLDER'] = 'static'
 
 app.config['UPLOAD_FOLDER'] = f"application/{app.config['STATIC_FOLDER']}/uploads"

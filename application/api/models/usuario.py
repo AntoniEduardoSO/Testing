@@ -63,7 +63,7 @@ class User(db.Model, UserMixin):
 
 class RegisterForm(FlaskForm):
     cpf = StringField(validators=[InputRequired(), Length(min=11, max=11)])
-    email = EmailField(validators=[InputRequired(), Length(min=4, max=30), Email()])
+    email = EmailField(validators=[InputRequired(), Length(min=4, max=70), Email()])
     password = PasswordField(validators=[InputRequired(), Length(min=8, max=20)])
     confirm_password = PasswordField(validators=[InputRequired(),
                                                  EqualTo('password', message='As senhas precisam ser iguais.')

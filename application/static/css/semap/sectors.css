@@ -1,0 +1,254 @@
+body {
+  background-color: #ecedf1;
+}
+
+.sector-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  margin-bottom: 40px;
+  padding: 24px 20px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title span {
+  padding: 10px;
+  font-family: "Poppins", "sans-serif";
+  font-size: 18px;
+  background-color: #ebe9ee;
+  color: #1a1a1a;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.sector-header form {
+  width: 60%;
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+}
+
+.sector-header .search {
+  width: 40%;
+  height: 40px;
+  position: relative;
+}
+
+.sector-header img {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.sector-header form input[type="text"] {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  padding: 8px;
+  padding-left: 40px;
+  font-family: "Poppins";
+  outline: none;
+}
+
+.sector-header form .select {
+  width: 20%;
+  height: 40px;
+  position: relative;
+}
+
+.sector-header form .select img {
+  position: absolute;
+  left: 120px;
+  top: 16px;
+}
+
+.sector-header form select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  padding: 8px;
+  font-family: "Poppins";
+  color: #7c7c7c;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.sector-header button {
+  width: 16%;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #f85f18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #de6a34;
+  color: #fff;
+  font-family: "Poppins";
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.sector-header button:hover {
+  border: 1px solid #e54d06;
+  background-color: #dd4600;
+}
+
+.sectors-list-container {
+  width: 100%;
+}
+
+.sectors-list-header {
+  display: grid;
+  grid-template-columns: 31% 15% 48% 6%;
+  font-family: "Poppins", "sans-serif";
+  color: #7f7f7f;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.sector {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  position: relative;
+  background-color: #fff;
+  cursor: pointer;
+  animation: sectorAnimation 0.4s forwards;
+  transition: box-shadow 0.1s ease;
+  border-left: 2px solid #c78306;
+}
+
+.sector-info-container {
+  width: 720px;
+  height: 320px;
+  border: 1px solid #b9b9b9;
+  border-top: 20px solid #f88e43;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+@keyframes sectorAnimation {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.sector:hover {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sector ul {
+  display: grid;
+  grid-template-columns: 31% 15% 48% 6%;
+  font-family: "Poppins", "sans-serif";
+}
+
+.sector ul li {
+  line-height: 22px;
+}
+
+.sector ul li.name {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: #1a1a1a;
+  padding: 22px;
+}
+
+.sector ul li.id {
+  display: none;
+}
+
+.sector ul li.tag-name {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.tag-name .tag {
+  padding: 6px 10px;
+  background-color: #3dff7f;
+  color: #007227;
+  border-radius: 3px;
+}
+
+.sector ul li.location {
+  height: 100px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  padding-right: 12px;
+  font-size: 14px;
+  padding-left: 0;
+}
+
+.more-infos {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.more-infos button {
+  padding: 8px 12px;
+  background-color: #8c8c8c;
+  color: #2a2a2a;
+  border-radius: 3px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
+.check-box {
+  width: 180px;
+  text-align: left;
+  padding: 12px 10px;
+  border: 1px solid rgb(242, 129, 53);
+  background-color: rgb(255, 167, 109);
+  color: #000;
+  position: absolute;
+  top: 50px;
+  left: -1px;
+  border-radius: 3px;
+}
+
+.check {
+  display: flex;
+  margin-bottom: 12px;
+  font-family: "Poppins", "sans-serif";
+  align-items: center;
+  gap: 4px;
+}
+
+.check input {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgb(242, 129, 53);
+}

@@ -5,6 +5,7 @@ from flask import render_template, request, redirect, flash, session, url_for, R
 from flask_login import user_unauthorized, login_user, login_required, logout_user, current_user, user_logged_out
 from application.api.models.usuario import User, RegisterForm, LoginForm
 from application.api.models.sessoes import Sessoes
+from application.api.models.escola import Escola
 from application.api.models.agenda import Agenda
 from application.backend.dashboard import dashboard_valores
 from application.backend.home import verificar_login
@@ -12,6 +13,7 @@ from application.backend.cadastro import verificar_cadastro
 from application.backend.sessao import checar_sessao_expirada
 from application.backend.agenda import api_agenda_backend, agenda_form
 from werkzeug.utils import secure_filename
+from sqlalchemy import and_
 import os
 
 @login_manager.unauthorized_handler
@@ -124,18 +126,40 @@ def configuracao_usuario():
 @login_required
 def usuarios():
     main_usuario = current_user
-    usuarios = User.query.all()
+    usuarios = User.query.filter(User.id_usuario != main_usuario.id_usuario).all()
+
+    if request.method == "POST":
+        atributo = request.form['atributo-search']
+
+        print("Atributo: " +  atributo)
+        filtro = request.form.get("filtro-search")
+
+        if atributo == "Setor":
+            usuarios = User.query.filter(and_(User.id_usuario != main_usuario.id_usuario, User.setor_escola == filtro)).all()
+            # usuarios = User.query.filter(User.id_usuario != main_usuario.id_usuario and User.setor_escola == filtro).all()
+
+        elif atributo == "Nome":
+            usuarios = User.query.filter(and_(User.id_usuario != main_usuario.id_usuario, User.nome.ilike(f"%{filtro}%"))).all()
+
+        elif atributo == "Todos":
+            usuarios = User.query.filter(User.id_usuario != main_usuario.id_usuario).all()
 
 
     return render_template('usuarios.html', main_usuario=main_usuario, usuarios=usuarios)
 
 
-@app.route('/usuarios/<int:id_usuario>')
+@app.route('/usuarios/<int:id_usuario>', methods=["GET", "POST"])
 @login_required
 def usuario(id_usuario):
     main_usuario = current_user
-    usuario = User.query.filter_by(id_usuario=id_usuario).all()
-    print(usuario.nome)
+    usuario = User.query.filter(User.id_usuario == id_usuario).first()
+
+    if request.method == "POST":
+        cargo = request.form["Status"]
+
+        usuario.status = cargo
+        db.session.commit()
+
 
     return render_template('usuario.html', main_usuario=main_usuario,  usuario = usuario)
 
@@ -158,6 +182,21 @@ def semap():
 
 
     return render_template("semap.html")
+
+@app.route('/dashboard/semap/listasetores', methods = ["POST", "GET"])
+def listasetores():
+    main_usuario = current_user
+
+    return render_template("listasetores.html", main_usuario = main_usuario)
+
+
+@app.route('/dashboard/semap/modificarsetor/<int:id>')
+@login_required
+def modificarsetor(id):
+
+    return """ <h1>olaaa</h1> """
+
+
 
 
 @app.route('/dashboard/semap/agenda', methods=["POST", "GET"])
@@ -183,6 +222,16 @@ def teste():
     main_usuario = current_user
 
     return render_template("teste.html")
+
+
+@app.route('/escolas', methods = ["POST", "GET"])
+def escolas():
+    main_usuario = current_user
+
+    escolas = Escola.query.all()
+
+
+    return render_template("escolas.html", escolas = escolas)
 
 
 

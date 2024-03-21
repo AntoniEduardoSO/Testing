@@ -6,7 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{usuario.nome}}</h1>
-    <h1>{{main_usuario.nome}}</h1>
+    <h1>{{ usuario.nome }}</h1>
+    <h1>{{ main_usuario.nome }}</h1>
+
+
+    <form method="POST">
+        <select name="Status" id="">
+            <option value="{{usuario.status}}"> {{ usuario.status }}</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Macaco Pajé">Macaco Pajé</option>
+        </select>
+
+        <button type="submit">Mudar</button>
+    </form>
 </body>
 </html>

@@ -15,12 +15,9 @@ def verificar_login(form):
     try:
         if user:
             if user.ver_senha(senha = form.password.data):
-                if( verificar_sessao(user.id_usuario)):
-                    login_user(user)
-                    return True
+                login_user(user)
+                return True
                 
-                else:
-                    flash("Usuário ja está Conectado.", "error")
         
             else:
                 flash("Usuário ou senha errados.", "error")

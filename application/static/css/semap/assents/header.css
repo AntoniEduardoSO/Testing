@@ -1,0 +1,136 @@
+.header-container {
+  width: 100%;
+  height: 60px;
+  top: 0;
+  background-color: #1c1a1b;
+}
+
+.header {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-bar {
+  flex: 1;
+}
+
+.header button {
+  padding: 8px 12px;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  font-family: "Poppins", "sans-serif";
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  background-color: #bababa;
+  color: #1c1a1b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  display: none;
+}
+
+.header button:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background-color: #323232;
+  box-shadow: 0 5px #323232, 0 -5px #323232;
+}
+
+.nav-list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+}
+
+.nav-list li:first-child {
+  position: relative;
+}
+
+[data-dropdown].active .nav-dropdown {
+  display: block;
+}
+
+.nav-list li:first-child img {
+  margin-left: 8px;
+}
+
+.nav-list li {
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-list li a {
+  font-family: "Poppins", "sans-serif";
+  color: #fff;
+}
+
+.nav-list li a:hover {
+  color: rgb(255, 124, 37);
+}
+
+.header .nav-dropdown {
+  width: 240px;
+  padding: 8px;
+  top: 50px;
+  background-color: rgb(255, 167, 109);
+  font-family: "Poppins", "sans-serif";
+  position: absolute;
+  border: 1px solid #1c1a1b;
+  border-radius: 3px;
+  display: none;
+  z-index: 200;
+}
+
+.header .nav-dropdown a {
+  color: #1c1a1b;
+}
+
+.header .nav-dropdown a:hover {
+  color: #fff;
+}
+
+@media (max-width: 577px) {
+  .header {
+    position: relative;
+  }
+
+  .nav-list.active {
+    display: block;
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 48px;
+    left: 68px;
+    display: block;
+    width: 180px;
+    height: fit-content;
+    border: 1px solid #1c1a1b;
+    background-color: #ffa63d;
+    border-radius: 3px;
+    display: none;
+  }
+
+  .header .nav-dropdown {
+    top: 12px;
+    position: relative;
+    display: none;
+    width: 220px;
+    line-height: 24px;
+  }
+
+  .header button {
+    display: flex;
+  }
+}
